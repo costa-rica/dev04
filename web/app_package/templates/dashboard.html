@@ -1,0 +1,90 @@
+{% extends "_layout.html" %}
+{% block main %}
+<section class="dashboard">
+    <div class = "title">
+        {{ page_name }}
+      </div>
+
+
+    <div class="tbl_img">
+      <div class="table_div">
+        <form method="POST">
+          <div class="table_div_sub">
+            <div class="table_headers">
+              <div class="header header_var">
+                Variable on Sleep
+              </div>
+              <div class="header header_corr">
+                Correlation
+              </div>
+            </div>
+            <div class="table_content">
+  
+              <div class="row_header">
+                {% if buttons_dict['avg_temp']!=1 %}
+                <button type="submit" name="avg_temp" value="1" class="btn-primary btn_header">Avg Daily Temperature</button>
+                {% else %}
+                <button type="submit" name="avg_temp" value="1" class="btn-primary btn_header btn_pressed_on">Avg Daily Temperature</button>
+                {% endif %}
+              </div>
+              <div class="row_value">
+                {% if buttons_dict['avg_temp']!=1 %}
+                {{ corr_dict['avg_temp'] }}
+                {% else %}
+                Off
+                {% endif %}
+              </div>
+  
+              <div class="row_header">
+                {% if buttons_dict['cloudiness']!=1 %}
+                <button type="submit" value="1" name="cloudiness" class="btn-primary btn_header">Cloudiness</button>
+                {% else %}
+                <button type="submit" value="1" name="cloudiness" class="btn-primary btn_header btn_pressed_on" >Cloudiness</button>
+                {% endif %}
+              </div>
+              <div class="row_value">
+                {% if buttons_dict['cloudiness']!=1 %}
+                  {{ corr_dict['cloudiness'] }}
+                  {% else %}
+                  Off
+                {% endif %}
+              </div>
+  
+  
+            </div>
+  
+  
+          </div>
+
+        </form>
+
+
+  
+  
+      </div>
+  
+  
+      <div class="bokeh_div">
+            {{ div_b|safe }}
+        </div>
+        
+      </div>
+  
+    </div>
+  
+  </section>
+
+
+{{ script_b|safe }}
+
+
+
+
+<script src="../static/bokeh/bokeh-2.4.3.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    Bokeh.set_log_level("info");
+</script>
+
+
+
+{% endblock %}

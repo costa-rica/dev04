@@ -1,0 +1,43 @@
+{% extends "_layout.html" %}
+{% block main %}
+
+<section class = "home">
+  <div class="not_nav">
+
+    <div class="home_body">
+  
+      <div class="home_buttons">
+        <a class="div_button home_register" href="{{ url_for('users.register') }}">
+          Register
+        </a>
+        
+        <a class="div_button home_login" href="{{ url_for('users.login') }}">
+          Login
+        </a>
+  
+      </div>
+      <div class="div_writing">
+        <div class = "writing_content">
+          What Sticks (WS) is an application that collects existing data from devices and applications we already use to help navigate our own wellness.
+            <br><br>
+    
+            Currently, it is collecting Oura Ring Sleep Scores and weather data.
+            <br><br>
+    
+            There have been studies that have found a link between the temperature you sleep in with the quality of sleep. WS is attempting to personalize that link by calculating the correlation between your local temperature and Oura Sleep Score. 
+            <br><br>
+            
+            Once registered, users can update their accounts their Oura Ring Token and location information. WS will collect these data daily.
+            <br><br>
+            As the data accumulates you will be able to see the correlation between your sleep score and the temperature.
+            <br><br>
+            If you would like to see how this works login as a guest and you can see my history.
+            <br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "_layout.html" %}
+{% block main %}
+
+<section class="account">
+
+    <div class="account_body">
+        <div class="title">
+            Account page
+        </div>
+
+        <div class="register_form">
+            <form method="POST" action="">
+
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" class="register_text" value="{{ email }}"><br><br>
+
+
+                <!-- <label for="oura_token">Oura Ring Token:</label> -->
+                <button type="button" class="btn_to_label" data-bs-toggle="modal" 
+                    data-bs-target="#activityModal"><u>Oura Ring Token: </u>
+                </button>
+                <input type="text" id="oura_token" name="oura_token" class="register_text"
+                    value="{{ oura_token }}"><br><br>
+
+
+
+                <label for="location_text">Location:</label>
+                <input type="text" id="location_text" name="location_text" class="register_text"
+                    placeholder="Latitude, Longitude" value = "{{ location_coords }}">
+
+                <div class="element_right">
+
+                    <input class="btn btn-secondary btn_loc" type="button" value=""
+                        onclick="getLocation()">
+                    <label class="form-check-label password_checkbox">
+                        Get Location
+                    </label>
+    
+                </div><br><br>
+
+                <div class="element_right">
+
+                    <input type="submit" value="Update" class="btn btn-secondary btn_custom01">
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Get your Oura Ring token</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <ol>
+                <li>Create an Oura account using the Oura iOS or Android application. Use the same account to sign-in to <a href="https://cloud.ouraring.com">https://cloud.ouraring.com</a>. </li>
+                <li>Next enter a reason and copy the token <a href="https://cloud.ouraring.com/personal-access-token ">https://cloud.ouraring.com/personal-access-token </a></li>
+            </ol>
+
+            
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  
+  
+
+<!-- Get location -->
+<script>
+    var x = document.getElementById("location_text");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        x.value = position.coords.latitude + ", " + position.coords.longitude;
+    }
+</script>
+<!-- location source: https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation -->
+
+
+
+{% endblock %}

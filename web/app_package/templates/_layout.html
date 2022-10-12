@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/main.css') }}">
+        
+    <!-- Import the Bootstrap stylesheet -->
+    <script src="../static/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="../static/node_modules/jquery/dist/jquery.js"></script>
+
+
+    <title>whatsticks</title>
+</head>
+<body>
+    <section class="navbar_section">
+
+
+
+
+
+
+
+    <div class="navbar navbar_custom  bg-primary" id="nav_section">
+    
+        <div class="left_and_middle">
+            <div class="nav_left">
+                <a href="{{ url_for('users.home') }}" >
+                    <div class="logo">
+                      <img class="dandd_logo" src="../static/images/wshLogo300px.png" >
+                    </div>
+                </a>
+            </div>
+           
+    
+            <div class="middle_nav_div">
+                <h1>What Sticks</h1>
+                {% if current_user.is_authenticated %}
+                <h3>{{ current_user.email }}</h3>
+                {% endif %}
+            </div>
+        </div>
+
+        <img class="mobile-menu" id="mobile-cta" src="../static/images/white-hamburger-menu-icon-24.png" alt="Open Navigation">
+
+        <nav>
+            <img id="mobile-exit" class="mobile-menu-exit" src="../static/images/exit.svg" alt="Close Navigation">
+            <ul class="primary-nav ul_primary" id="nav_horizontal_list">
+                {% if current_user.is_authenticated %}
+
+                <li class="nav-item dropdown li_primary">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown2"role="button"
+                        data-bs-toggle="dropdown"aria-expanded="false">About</a>
+
+                    <div class="dropdown-menu wsh_items_alignment" aria-labelledby="navbarDropdown2">
+                        <a class="dropdown-item" href="{{ url_for('users.about_us') }}">About</a>
+                        <a class="dropdown-item" href="{{ url_for('users.privacy') }}">Privacy</a>
+                        
+
+                    </div>
+                </li>
+                <li class="nav-item li_primary"><a class="nav-link" href="{{ url_for('dash.dashboard') }}">Dashboard</a></li>
+                <li class="nav-item li_primary"><a class="nav-link" href="{{ url_for('users.account') }}">Account</a></li>
+                <li class="nav-item li_primary"><a class="nav-link" href="{{ url_for('users.logout') }}">Logout</a></li>
+                <!-- <li class="nav-item li_primary"><a class="nav-link" href="{{ url_for('users.youtube_request') }}">YouTube Request</a></li> -->
+                {% else %}
+
+                <li class="nav-item dropdown li_primary">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown2"role="button"
+                        data-bs-toggle="dropdown"aria-expanded="false">About</a>
+
+                    <div class="dropdown-menu wsh_items_alignment" aria-labelledby="navbarDropdown2">
+                        <a class="dropdown-item" href="{{ url_for('users.about_us') }}">About</a>
+                        <a class="dropdown-item" href="{{ url_for('users.privacy') }}">Privacy</a>
+                        
+
+                    </div>
+                </li>
+
+                <li class="nav-item li_primary"><a class="nav-link" href="{{ url_for('users.login') }}">Login</a></li>
+                <li class="nav-item li_primary"><a class="nav-link" href="{{ url_for('users.home') }}">Home</a></li>
+                <!-- <li class="nav-item li_primary"><a class="nav-link" href="{{ url_for('users.youtube_request') }}">YouTube Request</a></li> -->
+                
+                
+                
+                
+                {% endif %}
+            </ul>
+        </nav>
+
+    </section>
+    
+    <div class = "flash_custom_parent" >
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+      
+            <div class="alert alert-{{ category }} alert_custom" id="div_flash"  >
+              <i class="close icon"></i>
+      
+              {{ message }}
+              <div class="close_right">
+                <input type="button" value=&#10006 onclick="removeFlash()" class="btn btn-secondary btn_custom02">
+              </div>
+              
+            </div>
+          {% endfor %}
+        {% endif %}
+        {% endwith %}
+      
+      </div>
+
+    {% block main %}{% endblock %}
+
+<script>
+    const mobileBtn = document.getElementById('mobile-cta')
+        nav = document.querySelector('nav')
+        mobileBtnExit = document.getElementById('mobile-exit');
+
+    mobileBtn.addEventListener('click', () => {
+        nav.classList.add('menu-btn');
+    })
+
+    mobileBtnExit.addEventListener('click', () => {
+        nav.classList.remove('menu-btn');
+    })
+</script>
+
+<!-- Remove flash on click -->
+<script>
+    function removeFlash() {
+        const element = document.getElementById('div_flash');
+        element.remove();
+    }
+</script>
+
+<!-- assign navbar height to --nav-height -->
+<script>document.documentElement.style.setProperty('--nav-height', `${document.getElementById("nav_section").offsetHeight}px`);</script>
+
+</body>
+</html>

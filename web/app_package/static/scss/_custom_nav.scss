@@ -1,0 +1,220 @@
+
+/* Flash */
+.flash_custom_parent {
+    position: relative;
+
+    .alert_custom {
+        position: absolute;
+        top: var(--nav-height);
+
+        width: 100%;
+
+        .close_right {
+            float: right;
+        }
+    }
+}
+
+
+
+
+/* Navbar */
+section.navbar_section {
+    padding-top: 0;
+    margin-top:0;
+    .navbar_custom{
+        justify-content: flex-start;
+        position: fixed;
+        width:100%;
+        height: 5rem;
+        .nav_left{
+            padding-left: 2rem;
+            height: 6rem;
+            padding-top: -1rem;
+            margin-top:0;
+            a{
+                text-decoration: none;
+                font-weight: bold;
+                font-size: large;
+                color: var(--bs-info);
+                padding-top: 0;
+                margin-top:0;
+            }
+            .dandd_logo{
+                height:4rem;
+                margin-top: -1rem;
+            }
+        }
+        .middle_nav_div {
+            display: none;
+        }
+        nav.menu-btn{display:block;}
+        nav {display: none;}
+        .mobile-menu{
+            position: absolute;
+            cursor: pointer;
+            right:1rem;
+            height: 5rem;
+        }
+        nav {
+            position: fixed;
+            z-index: 99999;
+            width: 50%;
+            right: 0;
+            top: 0;
+            background: var(--bs-gray-500);
+            height: 100%;
+
+            ul {
+                list-style-type: none;
+                padding:2rem 2rem 0 0;
+                li{
+
+                    font-size: 2em;
+                    a{
+                        text-decoration: none;
+                        display: block;
+                        padding: .5em 10px .5em 0;
+                        
+                        text-align: right;
+                        cursor: pointer;
+                        &:hover {font-weight: bold;}
+                    }    
+                }
+            }
+            .dropdown-menu{
+                background-color: var(--bs-gray-700);
+                width: 100%;
+                .dropdown-item{
+                    color: var(--bs-gray-100);
+                    text-align: left;
+                }
+            }
+            .mobile-menu-exit{
+                float: right;
+                margin: .5em;
+                cursor: pointer;
+            }
+            .dropdown{
+                background-color: none;
+                &:hover {background-color: none;}
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width: 576px) {
+    section.navbar_section {
+    .navbar_custom{
+        height: 9rem;
+        .left_and_middle{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // background-color: olive;
+            padding: 0 0 1rem 0;
+            width: 80%;
+            .nav_left{
+                flex:1;
+                .dandd_logo{
+                    height:7rem;
+                    margin-top: -1rem;
+                }
+            }
+            .middle_nav_div {
+                flex:5;
+                // justify-content: center;
+                text-align: center;
+                display: inline;
+                color: white;
+                h1{
+                    font-size: 4rem;
+                    margin-bottom:0;
+                    // padding-bottom:0;
+                }
+                
+            }
+        }
+        nav{
+            width:30%;
+            max-width:20rem;
+        }
+
+        .mobile-menu{
+            right:1rem;
+            height: 100%;
+
+        }
+    }
+}
+}
+
+
+
+
+// @media screen and (min-width: 576px) {
+//     section.navbar_section {
+//         .navbar_custom {
+//             height: 8rem;
+
+//             .left_and_middle {
+//                 display: flex;
+//                 justify-content: center;
+//                 align-items: center;
+//                 // background-color: olive;
+//                 width: 80%;
+
+//                 .nav_left {
+//                     flex: 1;
+
+//                     .dandd_logo {
+//                         height: 7rem;
+//                         margin-top: -1rem;
+//                     }
+//                 }
+
+//                 .middle_nav_div {
+//                     flex: 5;
+//                     // justify-content: center;
+//                     text-align: center;
+//                     display: inline;
+//                     color: white;
+
+//                     h1 {
+//                         font-size: 4vh;
+//                         margin-bottom: 0;
+//                         // padding-bottom:0;
+//                     }
+
+//                 }
+//             }
+//             nav{width: 30%;}
+//             .mobile-menu {
+//                 // position: absolute;
+//                 // cursor: pointer;
+//                 right: 1rem;
+//                 // top: 30px;
+//                 height: 100%;
+
+//             }
+//         }
+//     }
+// }
+
+
+// @media screen and (min-width: 620px) {
+//     section.navbar_section {
+//         .navbar_custom {
+//             .left_and_middle {
+//                 .middle_nav_div {
+//                     h1 {
+//                         font-size: 6vh;
+//                     }
+//                 }
+//             }
+//             nav{width: 25%;}
+//         }
+
+//     }
+// }
